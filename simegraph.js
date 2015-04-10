@@ -1,4 +1,10 @@
-
+/**
+ * @license Simegraph JS
+ *
+ * (c) 2015 Padrone
+ *
+ * License: www.padrone.nl/license
+ */
 
       var closureCompile = false;
       var DBG = true && !closureCompile;

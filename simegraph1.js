@@ -1,3 +1,10 @@
+/**
+ * @license Simegraph JS
+ *
+ * (c) 2015 Padrone
+ *
+ * License: www.padrone.nl/license
+ */
 var e=sconf&&sconf.mask?sconf.mask:"00FF00",aa=sconf?sconf.f?!0:!1:!1,u=sconf?sconf.fastDraw?!0:!1:!1,z=sconf?sconf.g?!0:!1:!1,ba=sconf?sconf.addReverseJpgFiles?!0:!1:!0,ca=sconf&&sconf.frameSpeed?sconf.frameSpeed:33,da=sconf&&sconf.waitTimeStart?sconf.waitTimeStart:3E3,ea=sconf&&sconf.waitTimeRepeat?sconf.waitTimeRepeat:3E3,A=sconf&&sconf.jpgColorMargin?sconf.jpgColorMargin:6,D=sconf&&sconf.filterDepth?sconf.filterDepth:10,fa=sconf&&sconf.filterThreshold?sconf.filterThreshold:6,E=sconf&&sconf.path?
 sconf.path:"img/",F=document.getElementById("myCanvas"),G=F.getContext("2d"),H=document.getElementById("canvasVirtual"),I=H.getContext("2d"),K,L,M=null,N=null,O=null;
 function P(a,c,b){var d=0;b&&(d=b);b=compCoordinates[d];var d=F.width,l=F.height,B=H.width,g=H.height;u||I.drawImage(a,0,0);M&&u||(M=I.getImageData(0,0,B,g).data);O||(N=G.getImageData(0,0,d,l),O=N.data);a=d-1;var g=0,h=l-1,m=0,t=-1,f=0,v=2*D,J=4*v,C=4*B*D,n=parseInt(e.substring(0,2),16),p=parseInt(e.substring(2,4),16),q=parseInt(e.substring(4,6),16);125<n?n-=A:n+=A;125<p?p-=A:p+=A;125<q?q-=A:q+=A;for(var r=0;r<b.h;r++)for(var w=B*(r+b.y)*4+4*b.x,Y=d*(r+0+b.dy)*4+4*(0+b.dx),x=f=0;x<b.w;x++,w+=4,Y+=
