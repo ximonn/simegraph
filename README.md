@@ -1,11 +1,20 @@
 # Simegraph JS
 Animated jpgs. A small javascript lib and a few views to create high quality animated jpegs.
 
-* Official website: http://www.padrone.nl
+* Official website: http://www.padrone.nl/
 * Licensing: http://www.padrone.nl/simegraph_license
 * Support: contact me
 
-## Step by step guide / howto
+## How it works
+
+* Explanation how it works: http://padrone.nl/rembrandt_simegraph
+
+## Step by step guide 
+
+* Demo related to this howto: http://www.padrone.nl/simegraph/
+
+# Instructions
+
 This instruction is based on mac-os, if you're use a linux flavor it should be straight forward and even easier for you.
 
 Chose to apply a Mask color (white, red or green or black) that works best with your animation jpg's. The example is a really bad combo → white. The walking man has a white bag which is almost blown out – there is a white colored edge at the building he passes. It's a terrible combination, but the result is almost ok. With a green mask this animation would work great.
@@ -20,12 +29,12 @@ Download & place the package in a folder on your local web-directory (see System
 
 File name | Description
 --------- | -----------
-index.html | Starting point, to do the animation with individual jpegs
+dev.html | Starting point, to do the animation with individual jpegs
+index.html | Closure compiled result (strips of all the development related javascript)
 cut.html | To create the composite image, one single image for all animation jpgs
 fast.html | To do the animation with the composite jpegs
-result.html | The closure compiled optimized version of fast.html
 simegraph.js | The script for building the animation, intended for developing only
-simegraph1.js | The reduced script for the fast version of the animation (for 'production')
+simegraph1.js | The reduced script for the fast version of the animation (for 'production'). Note: for development use simegraph.js.
 impage.css | A bit of styling
 
 Place your base.jpg and the animation jpg's in the same folder
