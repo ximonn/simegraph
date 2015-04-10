@@ -13,6 +13,7 @@
       var default_frameSpeed = 33;
       var default_waitTimeStart = 3000;
       var default_waitTimeRepeat = 3000;
+      var default_jpgPath = "img/";
       
       // expiremental parameters
       var default_jpgColorMargin = 6;  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
@@ -48,7 +49,8 @@
         waitTimeRepeat: (sconf && sconf.waitTimeRepeat) ? sconf.waitTimeRepeat : default_waitTimeRepeat,
         jpgColorMargin: (sconf && sconf.jpgColorMargin) ? sconf.jpgColorMargin : default_jpgColorMargin,
         filterDepth: (sconf && sconf.filterDepth) ? sconf.filterDepth : default_filterDepth,
-        filterThreshold: (sconf && sconf.filterThreshold) ? sconf.filterThreshold : default_filterThreshold
+        filterThreshold: (sconf && sconf.filterThreshold) ? sconf.filterThreshold : default_filterThreshold,
+        jpgPath: (sconf && sconf.path) ? sconf.path : default_jpgPath
       }
 
       DBG && !_conf.basicDraw && !_conf.fastDraw && !_conf.compositeDraw && console.log("Error: no draw method chosen - check sconf");
@@ -600,12 +602,12 @@
                   startAnim(imgObjectC);
                 }, remainingWaitTime);
               }
-              imgObjectC.src = "composite.jpg";
+              imgObjectC.src = _conf.jpgPath + "composite.jpg";
               if (closureCompile) {
                 imgObjectC.onload.call(imgObjectC);
               }
         };
-        imgObject.src = jpgFiles[0].name;
+        imgObject.src = _conf.jpgPath + jpgFiles[0].name;
         if (closureCompile) {
           imgObject.onload.call(imgObject);
         }
@@ -616,7 +618,7 @@
         // preload images and start anim on first image        
         for (var n=0; n < jpgFiles.length; n++) {
           var imageObj = new Image();
-          imageObj.src = jpgFiles[n].name;
+          imageObj.src = _conf.jpgPath + jpgFiles[n].name;
           imageObj.myImageIndex = n;
           imgObjects.push(imageObj);
           
