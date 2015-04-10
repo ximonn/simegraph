@@ -1,6 +1,9 @@
-# simegraph
-Animated jpg. A small javascript lib and a few views to create high quality animated jpegs.
+# Simegraph JS
+Animated jpgs. A small javascript lib and a few views to create high quality animated jpegs.
 
+* Official website: http://www.padrone.nl
+* Licensing: http://www.padrone.nl/simegraph_license
+* Support: contact me
 
 ## Step by step guide / howto
 This instruction is based on mac-os, if you're use a linux flavor it should be straight forward and even easier for you.
