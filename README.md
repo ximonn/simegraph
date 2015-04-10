@@ -17,7 +17,7 @@ Animated jpgs. A small javascript lib and a few views to create high quality ani
 
 This instruction is based on mac-os, if you're use a linux flavor it should be straight forward and even easier for you.
 
-Chose to apply a Mask color (white, red or green or black) that works best with your animation jpg's. The example is a really bad combo → white. The walking man has a white bag which is almost blown out – there is a white colored edge at the building he passes. It's a terrible combination, but the result is almost ok. With a green mask this animation would work great.
+Chose to apply a Mask color (white, red or green or black) that works best with your animation jpg's. The example is a really bad combo → white. The walking man has a white bag which is almost blown out – there is a white colored edge at the building he passes. It's a terrible combination - great for testing, even though the result is reasonable good. With a green mask this animation would work better (as in easier and more reliable cross browser).
 
 For best results use a tripod and remote trigger if you are capturing jpg's and/or movie segments. The example was shot with the camera semi hand-hold – I've corrected a bit for it, but you can see it in the details.
 
