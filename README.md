@@ -37,7 +37,8 @@ simegraph.js | The script for building the animation, intended for developing on
 simegraph1.js | The reduced script for the fast version of the animation (for 'production'). Note: for development use simegraph.js.
 impage.css | A bit of styling
 
-Place your base.jpg and the animation jpg's in the same folder
+# Ready?
+Place your base.jpg and the animation jpg's in the img folder
 
 Prepare the list of jpg's, for copy/paste into index.html
 
