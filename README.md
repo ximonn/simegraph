@@ -30,8 +30,10 @@ Place your base.jpg and the animation jpg's in the same folder
 Prepare the list of jpg's, for copy/paste into index.html
 
 Open a terminal window
-cd to the path where the jpg's are stored
+```bash
+cd path_where_the_jpgs_are_stored
 ls -1 -r *.jpg
+```
 
 	.. if that fails, you can type them by hand.
 
