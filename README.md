@@ -16,7 +16,7 @@ For best results, don't use jpg's for the animation but start of with only png f
 Download & place the package in a folder on your local web-directory (see System preferences, web-sharing, open website folder).
 
 File name | Description
------------------------
+--------- | -----------
 index.html | Starting point, to do the animation with individual jpegs
 cut.html | To create the composite image, one single image for all animation jpgs
 fast.html | To do the animation with the composite jpegs
