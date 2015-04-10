@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #000;
+}
+
+.section { height: 100vh; }
+
+#divElement{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -450px;
+    margin-left: -800px;
+    width: 1600px;
+    height: 900px;
+}​

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link type="text/css" href="impage.css" rel="stylesheet">
+  </head>
+  <body>
+    <div>
+      <canvas id="myCanvas" width="1600" height="900"></canvas>
+    </div>
+    <div>
+      <canvas id="compositeCanvas" width="1660" height="870"></canvas>
+    </div>
+    <div style="display:none">
+      <canvas id="canvasVirtual" width="1600" height="900"></canvas>
+    </div>
+    <script>
+
+      var sconf = {
+        mask: "FFFFFF",
+        compositeDraw: true,
+        addReverseJpgFiles: false,
+        frameSpeed: 100,  // msec
+        waitTimeStart: 1000,
+        waitTimeRepeat: 0,
+        jpgColorMargin: 1,  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
+        filterDepth: 14,    // typically close to one jpg bock of 16 pixels
+        filterThreshold: 7
+      };
+
+      var compCoordinates = [
+        {name:"", x:0,y:0,w:1600,h:900, dx:0, dy:0}
+      ];
+
+      var jpgFiles = [
+          {name:"P3260805.jpg"}, // this first file is the base jpg (the whole scene)
+          {name:"P3260804.jpg"}, // these next are masked out animation frames
+          {name:"P3260803.jpg"},
+          {name:"P3260802.jpg"},
+          {name:"P3260801.jpg"},
+          {name:"P3260800.jpg"},
+          {name:"P3260799.jpg"},
+          {name:"P3260798.jpg"},
+          {name:"P3260797.jpg"},
+          {name:"P3260796.jpg"},
+          {name:"P3260795.jpg"},
+          {name:"P3260794.jpg"},
+          {name:"P3260793.jpg"},
+          {name:"P3260792.jpg"},
+          {name:"P3260791.jpg"},
+          {name:"P3260790.jpg"},
+          {name:"P3260789.jpg"},
+          {name:"P3260788.jpg"},
+          {name:"P3260787.jpg"},
+          {name:"P3260786.jpg"},
+          {name:"P3260785.jpg"},
+          {name:"P3260784.jpg"}
+      ];
+
+ 
+    </script>
+    <script src="simegraph.js"></script>
+  </body>
+</html>

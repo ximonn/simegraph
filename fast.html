@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link type="text/css" href="impage.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id='divElement'>
+      <canvas id="myCanvas" width="1600" height="900"></canvas>
+    </div>
+    <div style="display:none">
+      <canvas id="canvasVirtual" width="1660" height="870"></canvas>
+    </div>
+    <script>
+
+      var frameSpeed = 40;
+      var sconf = {
+        mask: "FFFFFF",
+        fastDraw: true,
+        addReverseJpgFiles: false,
+        frameSpeed: frameSpeed,  // msec
+        waitTimeStart: 5000,
+        waitTimeRepeat: 6000,
+        jpgColorMargin: 2,  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
+        filterDepth: 14,    // typically close to one jpg bock of 16 pixels
+        filterThreshold: 6
+      };
+
+      var compCoordinates = [
+       {name:"P3260804.jpg", x:0,y:0,w:189,h:299, dx:293, dy:526},
+       {name:"P3260803.jpg", x:189,y:0,w:155,h:283, dx:327, dy:518},
+       {name:"P3260802.jpg", x:344,y:0,w:174,h:274, dx:324, dy:527},
+       {name:"P3260801.jpg", x:518,y:0,w:187,h:275, dx:337, dy:526},
+       {name:"P3260800.jpg", x:705,y:0,w:247,h:275, dx:299, dy:526},
+       {name:"P3260799.jpg", x:952,y:0,w:241,h:275, dx:305, dy:526},
+       {name:"P3260798.jpg", x:1193,y:0,w:195,h:280, dx:350, dy:513},
+       {name:"P3260797.jpg", x:1388,y:0,w:215,h:267, dx:352, dy:526},
+       {name:"P3260796.jpg", x:0,y:299,w:225,h:267, dx:366, dy:526},
+       {name:"P3260795.jpg", x:225,y:299,w:221,h:259, dx:373, dy:534},
+       {name:"P3260794.jpg", x:446,y:299,w:250,h:283, dx:367, dy:518},
+       {name:"P3260793.jpg", x:696,y:299,w:220,h:259, dx:421, dy:534},
+       {name:"P3260792.jpg", x:916,y:299,w:239,h:275, dx:419, dy:518},
+       {name:"P3260791.jpg", x:1155,y:299,w:266,h:291, dx:423, dy:510},
+       {name:"P3260790.jpg", x:1421,y:299,w:226,h:267, dx:447, dy:526},
+       {name:"P3260789.jpg", x:0,y:590,w:225,h:277, dx:465, dy:516},
+       {name:"P3260788.jpg", x:225,y:590,w:242,h:265, dx:477, dy:522},
+       {name:"P3260787.jpg", x:467,y:590,w:250,h:271, dx:487, dy:520},
+       {name:"P3260786.jpg", x:717,y:590,w:219,h:275, dx:503, dy:518},
+       {name:"P3260785.jpg", x:936,y:590,w:219,h:261, dx:519, dy:526},
+       {name:"P3260784.jpg", x:1155,y:590,w:211,h:259, dx:542, dy:526}
+      ];
+
+      var jpgFiles = [
+          {name:"P3260805.jpg", time: frameSpeed*1.2}, // this first file is the base jpg (the whole scene)
+          {name:"P3260804.jpg", time: frameSpeed*1.2}, // these next are masked out animation frames
+          {name:"P3260803.jpg", time: frameSpeed*1.2},
+          {name:"P3260802.jpg", time: frameSpeed*1.2},
+          {name:"P3260801.jpg", time: frameSpeed*1.2},
+          {name:"P3260800.jpg", time: frameSpeed*1.2},
+          {name:"P3260799.jpg", time: frameSpeed*1.2},
+          {name:"P3260798.jpg", time: frameSpeed*1.2},
+          {name:"P3260797.jpg", time: frameSpeed*1.2},
+          {name:"P3260796.jpg", time: frameSpeed*1.2},
+          {name:"P3260795.jpg", time: frameSpeed*1.3},
+          {name:"P3260794.jpg", time: frameSpeed*1.3},
+          {name:"P3260793.jpg", time: frameSpeed*1.3},
+          {name:"P3260792.jpg", time: frameSpeed*1.4},
+          {name:"P3260791.jpg", time: frameSpeed*1.4},
+          {name:"P3260790.jpg", time: frameSpeed*1.5},
+          {name:"P3260789.jpg", time: frameSpeed*1.5},
+          {name:"P3260788.jpg", time: frameSpeed*1.6},
+          {name:"P3260787.jpg", time: frameSpeed*1.7},
+          {name:"P3260786.jpg", time: frameSpeed*1.8},
+          {name:"P3260785.jpg", time: frameSpeed*2.2},
+          {name:"P3260784.jpg", time: frameSpeed*2.3},
+          {name:"P3260785.jpg", time: frameSpeed*5.2},
+          {name:"P3260786.jpg", time: frameSpeed*1.7}, // manually added the reverse jpgs, as I change the framespeed for the return walk
+          {name:"P3260787.jpg", time: frameSpeed*1.5},
+          {name:"P3260788.jpg", time: frameSpeed*1.3},
+          {name:"P3260789.jpg", time: frameSpeed*1.2},
+          {name:"P3260790.jpg", time: frameSpeed*1.1},
+          {name:"P3260791.jpg", time: frameSpeed},
+          {name:"P3260792.jpg", time: frameSpeed},
+          {name:"P3260793.jpg", time: frameSpeed},
+          {name:"P3260794.jpg", time: frameSpeed},
+          {name:"P3260795.jpg", time: frameSpeed},
+          {name:"P3260796.jpg", time: frameSpeed},
+          {name:"P3260797.jpg", time: frameSpeed},
+          {name:"P3260798.jpg", time: frameSpeed},
+          {name:"P3260799.jpg", time: frameSpeed},
+          {name:"P3260800.jpg", time: frameSpeed},
+          {name:"P3260801.jpg", time: frameSpeed*1.1},
+          {name:"P3260802.jpg", time: frameSpeed*1.2},
+          {name:"P3260803.jpg", time: frameSpeed*1.3},
+          {name:"P3260804.jpg", time: frameSpeed*1.2}
+      ];
+
+    
+    </script>
+    <script src="simegraph1.js"></script>
+  </body>
+</html>

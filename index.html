@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link type="text/css" href="impage.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id='divElement'>
+      <canvas id="myCanvas" width="1600" height="900"></canvas>
+    </div>
+    <div style="display:none">
+      <canvas id="canvasVirtual" width="1660" height="870"></canvas>
+    </div>
+    <script>
+
+var e={},g=[{name:"P3260804.jpg",x:0,y:0,d:189,c:299,a:293,b:526},{name:"P3260803.jpg",x:189,y:0,d:155,c:283,a:327,b:518},{name:"P3260802.jpg",x:344,y:0,d:174,c:274,a:324,b:527},{name:"P3260801.jpg",x:518,y:0,d:187,c:275,a:337,b:526},{name:"P3260800.jpg",x:705,y:0,d:247,c:275,a:299,b:526},{name:"P3260799.jpg",x:952,y:0,d:241,c:275,a:305,b:526},{name:"P3260798.jpg",x:1193,y:0,d:195,c:280,a:350,b:513},{name:"P3260797.jpg",x:1388,y:0,d:215,c:267,a:352,b:526},{name:"P3260796.jpg",x:0,y:299,d:225,c:267,
+a:366,b:526},{name:"P3260795.jpg",x:225,y:299,d:221,c:259,a:373,b:534},{name:"P3260794.jpg",x:446,y:299,d:250,c:283,a:367,b:518},{name:"P3260793.jpg",x:696,y:299,d:220,c:259,a:421,b:534},{name:"P3260792.jpg",x:916,y:299,d:239,c:275,a:419,b:518},{name:"P3260791.jpg",x:1155,y:299,d:266,c:291,a:423,b:510},{name:"P3260790.jpg",x:1421,y:299,d:226,c:267,a:447,b:526},{name:"P3260789.jpg",x:0,y:590,d:225,c:277,a:465,b:516},{name:"P3260788.jpg",x:225,y:590,d:242,c:265,a:477,b:522},{name:"P3260787.jpg",x:467,
+y:590,d:250,c:271,a:487,b:520},{name:"P3260786.jpg",x:717,y:590,d:219,c:275,a:503,b:518},{name:"P3260785.jpg",x:936,y:590,d:219,c:261,a:519,b:526},{name:"P3260784.jpg",x:1155,y:590,d:211,c:259,a:542,b:526}],m=[{name:"P3260805.jpg",time:48},{name:"P3260804.jpg",time:48},{name:"P3260803.jpg",time:48},{name:"P3260802.jpg",time:48},{name:"P3260801.jpg",time:48},{name:"P3260800.jpg",time:48},{name:"P3260799.jpg",time:48},{name:"P3260798.jpg",time:48},{name:"P3260797.jpg",time:48},{name:"P3260796.jpg",
+time:48},{name:"P3260795.jpg",time:52},{name:"P3260794.jpg",time:52},{name:"P3260793.jpg",time:52},{name:"P3260792.jpg",time:56},{name:"P3260791.jpg",time:56},{name:"P3260790.jpg",time:60},{name:"P3260789.jpg",time:60},{name:"P3260788.jpg",time:64},{name:"P3260787.jpg",time:68},{name:"P3260786.jpg",time:72},{name:"P3260785.jpg",time:88},{name:"P3260784.jpg",time:92},{name:"P3260785.jpg",time:208},{name:"P3260786.jpg",time:68},{name:"P3260787.jpg",time:60},{name:"P3260788.jpg",time:52},{name:"P3260789.jpg",
+time:48},{name:"P3260790.jpg",time:44},{name:"P3260791.jpg",time:40},{name:"P3260792.jpg",time:40},{name:"P3260793.jpg",time:40},{name:"P3260794.jpg",time:40},{name:"P3260795.jpg",time:40},{name:"P3260796.jpg",time:40},{name:"P3260797.jpg",time:40},{name:"P3260798.jpg",time:40},{name:"P3260799.jpg",time:40},{name:"P3260800.jpg",time:40},{name:"P3260801.jpg",time:44},{name:"P3260802.jpg",time:48},{name:"P3260803.jpg",time:52},{name:"P3260804.jpg",time:48}],w=e?"FFFFFF":"00FF00",ba=e?e.j?!0:!1:!1,B=
+e?!0:!1,C=e?e.k?!0:!1:!1,ca=e?!1:!0,da=e?40:33,ea=e?5E3:3E3,fa=e?6E3:3E3,F=e?2:6,G=e?14:10,H=document.getElementById("myCanvas"),I=H.getContext("2d"),J=document.getElementById("canvasVirtual"),K=J.getContext("2d"),M,N,O=null,P=null,Q=null;
+function R(a,c,b){var d=0;b&&(d=b);b=g[d];var d=H.width,n=H.height,D=J.width,h=J.height;B||K.drawImage(a,0,0);O&&B||(O=K.getImageData(0,0,D,h).data);Q||(P=I.getImageData(0,0,d,n),Q=P.data);a=d-1;var h=0,k=n-1,p=0,v=-1,f=0,x=2*G,L=4*x,E=4*D*G,q=parseInt(w.substring(0,2),16),r=parseInt(w.substring(2,4),16),t=parseInt(w.substring(4,6),16);125<q?q-=F:q+=F;125<r?r-=F:r+=F;125<t?t-=F:t+=F;for(var u=0;u<b.c;u++)for(var y=D*(u+b.y)*4+4*b.x,aa=d*(u+0+b.b)*4+4*(0+b.a),z=f=0;z<b.d;z++,y+=4,aa+=4){var A=function(a){var b=
+!1;(125<q?O[a]>q:O[a]<q)&&(125<r?O[++a]>r:O[++a]<r)&&(125<t?O[++a]>t:O[++a]<t)&&(b=!0);return b},l=function(a){var b=!1;if((125<q?O[a]<q:O[a]>q)||(125<r?O[++a]<r:O[++a]>r)||(125<t?O[++a]<t:O[++a]>t))b=!0;return b};f<G&&l(y)&&f++;if(0<f)if(l=y+L,z+x>=b.d||A(l))f-=2;else if(l=y-E,0>l||A(l))f-=2;else if(l=y+E,u+G>=b.c||A(l))f-=2;6<f&&(A=y,l=aa,Q[l]=O[A],Q[++l]=O[++A],Q[++l]=O[++A]);C&&c&&(6<f?(-1==v&&(z<a&&(a=z),u<k&&(k=u)),v=1):-1!=v&&(z>h&&(h=z),u>p&&(p=u),v=-1))}I.putImageData(P,0,0);if(C&&c)return a-=
+40,0>a&&(a=0),h+=40,h>=d&&(h=d-1),k-=40,0>k&&(k=0),p+=40,p>=n&&(p=n-1),{e:a,f:k,g:h,h:p,a:b.a,b:b.b}}var ga=[],S=0,ha=0,T=0;
+function ia(a){var c,b=a.src.split("/");c=b[b.length-1];b=a.i;1==b&&console.log("var compCoordinates = [");for(var d=!1,n=0;n<ga.length;n++)ga[n]==c&&(d=!0);d||ga.push(c);if(!d){a=R(a,!0);S+(a.g-a.e)>=M.width&&(S=0,ha+=T,T=0);for(var d=S,n=ha,D=H.width,h=M.width,k=M.height,p=K.getImageData(0,0,D,H.height).data,k=N.getImageData(0,0,h,k),v=k.data,f=a.e;f<a.g;f++)for(var x=a.f;x<a.h;x++){var L=D*x*4+4*f,E=h*(n+x-a.f)*4+4*(d+f-a.e);v[E]=p[L];v[++E]=p[++L];v[++E]=p[++L]}N.putImageData(k,0,0);c='  {name:"'+
+c+'", x:'+d+",y:"+n+",w:"+(a.g-a.e)+",h:"+(a.h-a.f)+", dx:"+(a.a+a.e)+", dy:"+(a.b+a.f)+"}";c=b==m.length-1?c+"\n];":c+",";console.log(c);b=a.h-a.f;b>T&&(T=b);S+=a.g-a.e}}function ja(a){for(var c=g.length,b=0,d=0;d<c&&!b;d++)g[d].name==a&&(b=d);return b}function ka(){var a=["webkit","moz","ms","o"];if("hidden"in document)return"hidden";for(var c=0;c<a.length;c++)if(a[c]+"Hidden"in document)return a[c]+"Hidden";return null}function U(){var a=ka();return a?document[a]:!1}var la=ka();
+if(la){var ma=la.replace(/[H|h]idden/,"")+"visibilitychange";document.addEventListener(ma,na)}function na(){U()&&B&&I.drawImage(V,0,0)}function oa(){function a(c){var b=c,d=da;B&&(d=m[b].time);setTimeout(function(){c++;c<m.length?a(c):!C&&0<fa&&(c=1,setTimeout(function(){a(c)},fa+(U()?1E3:0)));if(B)U()||drawImageStep(W,!1,ja(m[b].name));else{var d=pa[b];X[b]?drawImageStep(d):(console.log("info: image not available yet, nr:"+b),X[b]=drawImageStep)}},d+(U()?200:0))}a(1)}
+if(ca)for(var qa=m.length-2;0<qa;qa--)m.push(m[qa]);var X=Array(m.length);ba?drawImageStep=R:C&&(drawImageStep=ia,M=document.getElementById("compositeCanvas"),N=M.getContext("2d"),N.fillStyle="#"+w,N.fillRect(0,0,M.width,M.height));var pa=[],V=new Image,W=new Image;
+if(B)drawImageStep=R,V.onload=function(){I.drawImage(this,0,0);Date.now||(Date.now=function(){return(new Date).getTime()});var a=Date.now();W.onload=function(){var c=ea+a-Date.now();1>c&&(c=1);setTimeout(function(){K.drawImage(W,0,0);oa()},c)};W.src="composite.jpg";},V.src=m[0].name;else for(var Y=0;Y<m.length;Y++){var Z=new Image;Z.src=m[Y].name;Z.i=Y;pa.push(Z);Z.onload=0==Y?function(){I.drawImage(this,0,0);setTimeout(function(){oa()},ea)}:function(){var a=this.i;
+if(0<=a)if(X[a])X[a](V[a]);else X[a]=!0}};
+
+    </script>
+  </body>
+</html>
