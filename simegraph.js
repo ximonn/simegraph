@@ -5,7 +5,7 @@
  *
  * License: www.padrone.nl/license
  */
-
+(function () {
       var closureCompile = false;
       var DBG = true && !closureCompile;
 
@@ -243,25 +243,21 @@
                   if (xactive == -1) {
                     if (x < xa) {
                       xa = x;
-                      //console.log("  xa:"+xa+"  y:"+y);
                     }
                     if (y < ya) {
                       ya = y;
-                      //console.log("  ya:"+y);
                     }
                   }
                   xactive = 1;
               }
               else {
-                // tack bottom/right coordinate
+                // track bottom/right coordinate
                 if (xactive != -1) {
                   if (x > xb) {
                     xb = x;
-                    //console.log("  xb:"+xb+"  y:"+y);
                   }
                   if (y > yb) {
                       yb = y;
-                      //console.log("  yb:"+y);
                     }
                   xactive = -1;
                 }
@@ -292,8 +288,6 @@
           if (yb >= height) {
             yb = height - 1;
           }
-
-          //console.log("  xa,ya:"+xa+","+ya+"  xb,yb:"+xb+","+yb);
         
           var r = {x1:xa, y1:ya, x2:xb, y2:yb, dx:pos.dx, dy:pos.dy};
 
@@ -332,10 +326,7 @@
 
             // destination array pos
             var d = (cWidth*(des.y+y-pos.y1)*4) + (des.x+x-pos.x1)*4;
-            //var d = (cWidth * (des.y + y) * 4) + (des.x + x) * 4;
-
-            //var helps = " "+data[i]+", "+data[i+1]+", "+data[i+2];
-            //console.log(helps);
+            
 
             comp_data[d] = data[i];
             comp_data[++d] = data[++i];
@@ -389,7 +380,6 @@
           console.log("var compCoordinates = [");
         }
         
-
 
         if (!checkImageDuplicate(imageName)) {
 
@@ -570,7 +560,7 @@
         contextComposite.fillRect(0,0,canvasComposite.width,canvasComposite.height);
       }
 
-      
+      // --------------------- kick off ----------------------------------
 
       var imgObjects = [];
       var imgObject = new Image();
@@ -658,4 +648,6 @@
           }
         }
       }
+}());
+      
     
