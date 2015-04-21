@@ -17,11 +17,12 @@ Animated jpgs. A small javascript lib and a few views to create high quality ani
 
 This instruction is based on mac-os, if you're use a linux flavor it should be straight forward and even easier for you.
 
-Chose to apply a Mask color (white, red or green or black) that works best with your animation jpg's. The example is a really bad combo → white. The walking man has a white bag which is almost blown out – there is a white colored edge at the building he passes. It's a terrible combination - great for testing, even though the result is reasonable good. With a green mask this animation would work better (as in easier and more reliable cross browser).
+Chose to apply a Mask color (white, red or green or black) that works best with your animation jpg's. 
+In the example its best to not use a white mask. The walking man has a white bag which is almost blown out – there is a white colored edge at the building he passes. It's a terrible combination - great for testing, even though the result is reasonable good. With a green mask this animation works better (as in easier and more reliable cross browser).
 
 For best results use a tripod and remote trigger if you are capturing jpg's and/or movie segments. The example was shot with the camera semi hand-hold – I've corrected a bit for it, but you can see it in the details.
 
-Keep enough margin in the animation jpegs – to clear out the previous and next step (for back/forth animation) and to have some margin for the jpg color filter. I'm talking here about margin between the mask edge and the animating / changing pixels. As a minimum this margin should be 16pixels, I advise to take more, e.g. 32 pixels, to prevent any bleeding of the mask area into the animation bits.
+Keep enough margin in the animation jpegs – to clear out the previous and next step (for back/forth animation) and to have some margin for the jpg color filter. I'm talking here about margin between the mask edge and the animating / changing pixels. As a minimum this margin should be 16pixels.
 
 For best results, don't use jpg's for the animation but start of with only png files (lossless), the resulting composite.jpg will have only one pass of jpeg artifacts.
 
@@ -30,7 +31,7 @@ Download & place the package in a folder on your local web-directory (see System
 File name | Description
 --------- | -----------
 dev.html | Starting point, to do the animation with individual jpegs
-index.html | Closure compiled result (strips of all the development related javascript)
+index.html | Closure compiled result (strips of all the development related javascript), functional wise equivalent to fast.html
 cut.html | To create the composite image, one single image for all animation jpgs
 fast.html | To do the animation with the composite jpegs
 simegraph.js | The script for building the animation, intended for developing only
@@ -157,34 +158,9 @@ Changed sconf parameters:
 * filterDepth:14
 * filterThreshold:6
 
-If all looks good, you can generate the result.html → a reduced javascript blob – as you dont need all thats in simegraph.js
-
-To do this, install google closure compiler, it has a dependency on java but its worth it.
-
-If you dont want to do this step, you can include the simegraph1.js script instead of simegraph.js. It's a reduced version / closure compiled version of simegraph.js for the fast animation option.
+If all looks good, you can swap out the development version of simegraph with the closure compiled version.
 Do not use the simegraph.js on 'production', but use simegraph1.js instead.
 
-Here are the steps to closure compile your animation into one single blob:
-
-Next copy the javascript in fast.html into a file named fast.js
-Add the contents of simegraph.js to this fast.js
-Important: Change the var closureCompile to true
-
-```bash
-java -jar compiler.jar --compilation_level ADVANCED_OPTIMIZATIONS --js_output_file=out.js fast.js
-```
-
-Next open the file out.js, you need to make some edits in it:
-
-From the end of the file search backwards to two instances of a xxx.onload.call(xxx)
-These need to be removed, they are added so the closure compiler doesn't optimize everything away (as the onload.call is normally triggered by the browser, not the js code).
-e.g. remove:
-```javascript
-V.onload.call(V)
-W.onload.call(W)
-```
-Place the js blob in the result.html, you don't need the simegraph.js anymore! leave it out.
-
 ```html
 <!DOCTYPE HTML>
 <html>
@@ -198,37 +174,12 @@ Place the js blob in the result.html, you don't need the simegraph.js anymore! l
     <div style="display:none">
       <canvas id="canvasVirtual" width="1660" height="870"></canvas>
     </div>
-    <script>
-
-	// place the blob here
-
-
-    </script>
-  </body>
-</html>
-```
-
-Or if you didnt bother:
-
-```html
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <link type="text/css" href="impage.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id='divElement'>
-      <canvas id="myCanvas" width="1600" height="900"></canvas>
-    </div>
-    <div style="display:none">
-      <canvas id="canvasVirtual" width="1660" height="870"></canvas>
-    </div>
+    <script src="simegraph1.js"></script>
     <script>
 
       // place sconf, compCoordinates and jpgFiles variables here.
     
     </script>
-    <script src="simegraph1.js"></script>
   </body>
 </html>
 ```
