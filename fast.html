@@ -8,46 +8,48 @@
       <canvas id="myCanvas" width="1600" height="900"></canvas>
     </div>
     <div style="display:none">
-      <canvas id="canvasVirtual" width="1660" height="870"></canvas>
+      <canvas id="canvasVirtual" width="1600" height="800"></canvas>
     </div>
+    <script src="simegraph.js"></script>
     <script>
 
       var frameSpeed = 40;
       var sconf = {
-        mask: "FFFFFF",
+        mask: "00FF00",
         fastDraw: true,
         addReverseJpgFiles: false,
         frameSpeed: frameSpeed,  // msec
-        waitTimeStart: 5000,
+        waitTimeStart: 4000,
         waitTimeRepeat: 6000,
-        jpgColorMargin: 2,  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
-        filterDepth: 14,    // typically close to one jpg bock of 16 pixels
-        filterThreshold: 6
+        jpgColorMargin: 20,  
+        filterDepth: 12,        // bit more filtering needed on the composite (this works as the cutmargin was increased from default)
+        filterThreshold: 9
       };
 
-      var compCoordinates = [
-       {name:"P3260804.jpg", x:0,y:0,w:189,h:299, dx:293, dy:526},
-       {name:"P3260803.jpg", x:189,y:0,w:155,h:283, dx:327, dy:518},
-       {name:"P3260802.jpg", x:344,y:0,w:174,h:274, dx:324, dy:527},
-       {name:"P3260801.jpg", x:518,y:0,w:187,h:275, dx:337, dy:526},
-       {name:"P3260800.jpg", x:705,y:0,w:247,h:275, dx:299, dy:526},
-       {name:"P3260799.jpg", x:952,y:0,w:241,h:275, dx:305, dy:526},
-       {name:"P3260798.jpg", x:1193,y:0,w:195,h:280, dx:350, dy:513},
-       {name:"P3260797.jpg", x:1388,y:0,w:215,h:267, dx:352, dy:526},
-       {name:"P3260796.jpg", x:0,y:299,w:225,h:267, dx:366, dy:526},
-       {name:"P3260795.jpg", x:225,y:299,w:221,h:259, dx:373, dy:534},
-       {name:"P3260794.jpg", x:446,y:299,w:250,h:283, dx:367, dy:518},
-       {name:"P3260793.jpg", x:696,y:299,w:220,h:259, dx:421, dy:534},
-       {name:"P3260792.jpg", x:916,y:299,w:239,h:275, dx:419, dy:518},
-       {name:"P3260791.jpg", x:1155,y:299,w:266,h:291, dx:423, dy:510},
-       {name:"P3260790.jpg", x:1421,y:299,w:226,h:267, dx:447, dy:526},
-       {name:"P3260789.jpg", x:0,y:590,w:225,h:277, dx:465, dy:516},
-       {name:"P3260788.jpg", x:225,y:590,w:242,h:265, dx:477, dy:522},
-       {name:"P3260787.jpg", x:467,y:590,w:250,h:271, dx:487, dy:520},
-       {name:"P3260786.jpg", x:717,y:590,w:219,h:275, dx:503, dy:518},
-       {name:"P3260785.jpg", x:936,y:590,w:219,h:261, dx:519, dy:526},
-       {name:"P3260784.jpg", x:1155,y:590,w:211,h:259, dx:542, dy:526}
+     var compCoordinates = [
+           {name:"P3260804.jpg", x:0,y:0,w:171,h:273, dx:307, dy:538},
+           {name:"P3260803.jpg", x:171,y:0,w:138,h:266, dx:344, dy:524},
+           {name:"P3260802.jpg", x:309,y:0,w:158,h:253, dx:340, dy:536},
+           {name:"P3260801.jpg", x:467,y:0,w:165,h:256, dx:353, dy:536},
+           {name:"P3260800.jpg", x:632,y:0,w:231,h:248, dx:312, dy:538},
+           {name:"P3260799.jpg", x:863,y:0,w:226,h:251, dx:320, dy:538},
+           {name:"P3260798.jpg", x:1089,y:0,w:178,h:244, dx:364, dy:536},
+           {name:"P3260797.jpg", x:1267,y:0,w:192,h:245, dx:372, dy:538},
+           {name:"P3260796.jpg", x:0,y:273,w:212,h:239, dx:375, dy:538},
+           {name:"P3260795.jpg", x:212,y:273,w:197,h:237, dx:393, dy:541},
+           {name:"P3260794.jpg", x:409,y:273,w:233,h:260, dx:382, dy:529},
+           {name:"P3260793.jpg", x:642,y:273,w:194,h:236, dx:439, dy:542},
+           {name:"P3260792.jpg", x:836,y:273,w:224,h:252, dx:433, dy:529},
+           {name:"P3260791.jpg", x:1060,y:273,w:242,h:272, dx:439, dy:517},
+           {name:"P3260790.jpg", x:1302,y:273,w:211,h:242, dx:459, dy:535},
+           {name:"P3260789.jpg", x:0,y:545,w:211,h:253, dx:477, dy:527},
+           {name:"P3260788.jpg", x:211,y:545,w:222,h:244, dx:490, dy:533},
+           {name:"P3260787.jpg", x:433,y:545,w:231,h:245, dx:500, dy:532},
+           {name:"P3260786.jpg", x:664,y:545,w:204,h:246, dx:517, dy:532},
+           {name:"P3260785.jpg", x:868,y:545,w:204,h:242, dx:532, dy:535},
+           {name:"P3260784.jpg", x:1072,y:545,w:196,h:237, dx:556, dy:538}
       ];
+
 
       var jpgFiles = [
           {name:"P3260805.jpg", time: frameSpeed*1.2}, // this first file is the base jpg (the whole scene)
@@ -94,8 +96,9 @@
           {name:"P3260804.jpg", time: frameSpeed*1.2}
       ];
 
+      simegraph(sconf, compCoordinates, jpgFiles);
     
     </script>
-    <script src="simegraph1.js"></script>
+    
   </body>
 </html>

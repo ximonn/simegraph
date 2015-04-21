@@ -13,18 +13,20 @@
     <div style="display:none">
       <canvas id="canvasVirtual" width="1600" height="900"></canvas>
     </div>
+    <script src="simegraph.js"></script>
     <script>
 
       var sconf = {
-        mask: "FFFFFF",
+        mask: "00FF00",
         compositeDraw: true,
         addReverseJpgFiles: false,
         frameSpeed: 100,  // msec
         waitTimeStart: 1000,
         waitTimeRepeat: 0,
-        jpgColorMargin: 1,  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
-        filterDepth: 14,    // typically close to one jpg bock of 16 pixels
-        filterThreshold: 7
+        jpgColorMargin: 10,  // typically range 1 to 10, depends on how well jpg's are rendered in various browsers
+        filterDepth: 7,    // typically close to one jpg bock of 16 pixels
+        filterThreshold: 5,
+        cutMargin: 12       // example doesnt use so clean edges  - bit more margin for filter needed. Increased from 8 to 12
       };
 
       var compCoordinates = [
@@ -56,8 +58,8 @@
           {name:"P3260784.jpg"}
       ];
 
+      simegraph(sconf, compCoordinates, jpgFiles);
  
     </script>
-    <script src="simegraph.js"></script>
   </body>
 </html>

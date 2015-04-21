@@ -8,31 +8,97 @@
       <canvas id="myCanvas" width="1600" height="900"></canvas>
     </div>
     <div style="display:none">
-      <canvas id="canvasVirtual" width="1660" height="870"></canvas>
+      <canvas id="canvasVirtual" width="1600" height="800"></canvas>
     </div>
+    <script src="simegraph1.js"></script>
     <script>
-/**
- * @license Simegraph JS
- *
- * (c) 2015 Padrone
- *
- * License: www.padrone.nl/license
- */
- (function () {var e={},g=[{name:"P3260804.jpg",x:0,y:0,d:189,c:299,a:293,b:526},{name:"P3260803.jpg",x:189,y:0,d:155,c:283,a:327,b:518},{name:"P3260802.jpg",x:344,y:0,d:174,c:274,a:324,b:527},{name:"P3260801.jpg",x:518,y:0,d:187,c:275,a:337,b:526},{name:"P3260800.jpg",x:705,y:0,d:247,c:275,a:299,b:526},{name:"P3260799.jpg",x:952,y:0,d:241,c:275,a:305,b:526},{name:"P3260798.jpg",x:1193,y:0,d:195,c:280,a:350,b:513},{name:"P3260797.jpg",x:1388,y:0,d:215,c:267,a:352,b:526},{name:"P3260796.jpg",x:0,y:299,d:225,c:267,
-a:366,b:526},{name:"P3260795.jpg",x:225,y:299,d:221,c:259,a:373,b:534},{name:"P3260794.jpg",x:446,y:299,d:250,c:283,a:367,b:518},{name:"P3260793.jpg",x:696,y:299,d:220,c:259,a:421,b:534},{name:"P3260792.jpg",x:916,y:299,d:239,c:275,a:419,b:518},{name:"P3260791.jpg",x:1155,y:299,d:266,c:291,a:423,b:510},{name:"P3260790.jpg",x:1421,y:299,d:226,c:267,a:447,b:526},{name:"P3260789.jpg",x:0,y:590,d:225,c:277,a:465,b:516},{name:"P3260788.jpg",x:225,y:590,d:242,c:265,a:477,b:522},{name:"P3260787.jpg",x:467,
-y:590,d:250,c:271,a:487,b:520},{name:"P3260786.jpg",x:717,y:590,d:219,c:275,a:503,b:518},{name:"P3260785.jpg",x:936,y:590,d:219,c:261,a:519,b:526},{name:"P3260784.jpg",x:1155,y:590,d:211,c:259,a:542,b:526}],m=[{name:"P3260805.jpg",time:48},{name:"P3260804.jpg",time:48},{name:"P3260803.jpg",time:48},{name:"P3260802.jpg",time:48},{name:"P3260801.jpg",time:48},{name:"P3260800.jpg",time:48},{name:"P3260799.jpg",time:48},{name:"P3260798.jpg",time:48},{name:"P3260797.jpg",time:48},{name:"P3260796.jpg",
-time:48},{name:"P3260795.jpg",time:52},{name:"P3260794.jpg",time:52},{name:"P3260793.jpg",time:52},{name:"P3260792.jpg",time:56},{name:"P3260791.jpg",time:56},{name:"P3260790.jpg",time:60},{name:"P3260789.jpg",time:60},{name:"P3260788.jpg",time:64},{name:"P3260787.jpg",time:68},{name:"P3260786.jpg",time:72},{name:"P3260785.jpg",time:88},{name:"P3260784.jpg",time:92},{name:"P3260785.jpg",time:208},{name:"P3260786.jpg",time:68},{name:"P3260787.jpg",time:60},{name:"P3260788.jpg",time:52},{name:"P3260789.jpg",
-time:48},{name:"P3260790.jpg",time:44},{name:"P3260791.jpg",time:40},{name:"P3260792.jpg",time:40},{name:"P3260793.jpg",time:40},{name:"P3260794.jpg",time:40},{name:"P3260795.jpg",time:40},{name:"P3260796.jpg",time:40},{name:"P3260797.jpg",time:40},{name:"P3260798.jpg",time:40},{name:"P3260799.jpg",time:40},{name:"P3260800.jpg",time:40},{name:"P3260801.jpg",time:44},{name:"P3260802.jpg",time:48},{name:"P3260803.jpg",time:52},{name:"P3260804.jpg",time:48}],w=e?"FFFFFF":"00FF00",aa=e?e.j?!0:!1:!1,B=
-e?!0:!1,C=e?e.k?!0:!1:!1,ca=e?!1:!0,da=e?40:33,ea=e?5E3:3E3,fa=e?6E3:3E3,F=e?2:6,G=e?14:10,H=e&&e.path?e.path:"img/",I=document.getElementById("myCanvas"),J=I.getContext("2d"),K=document.getElementById("canvasVirtual"),M=K.getContext("2d"),N,O,P=null,Q=null,R=null;
-function ga(a,c,b){var d=0;b&&(d=b);b=g[d];var d=I.width,n=I.height,D=K.width,h=K.height;B||M.drawImage(a,0,0);P&&B||(P=M.getImageData(0,0,D,h).data);R||(Q=J.getImageData(0,0,d,n),R=Q.data);a=d-1;var h=0,k=n-1,p=0,v=-1,f=0,x=2*G,L=4*x,E=4*D*G,q=parseInt(w.substring(0,2),16),r=parseInt(w.substring(2,4),16),t=parseInt(w.substring(4,6),16);125<q?q-=F:q+=F;125<r?r-=F:r+=F;125<t?t-=F:t+=F;for(var u=0;u<b.c;u++)for(var y=D*(u+b.y)*4+4*b.x,ba=d*(u+0+b.b)*4+4*(0+b.a),z=f=0;z<b.d;z++,y+=4,ba+=4){var A=function(a){var b=
-!1;(125<q?P[a]>q:P[a]<q)&&(125<r?P[++a]>r:P[++a]<r)&&(125<t?P[++a]>t:P[++a]<t)&&(b=!0);return b},l=function(a){var b=!1;if((125<q?P[a]<q:P[a]>q)||(125<r?P[++a]<r:P[++a]>r)||(125<t?P[++a]<t:P[++a]>t))b=!0;return b};f<G&&l(y)&&f++;if(0<f)if(l=y+L,z+x>=b.d||A(l))f-=2;else if(l=y-E,0>l||A(l))f-=2;else if(l=y+E,u+G>=b.c||A(l))f-=2;6<f&&(A=y,l=ba,R[l]=P[A],R[++l]=P[++A],R[++l]=P[++A]);C&&c&&(6<f?(-1==v&&(z<a&&(a=z),u<k&&(k=u)),v=1):-1!=v&&(z>h&&(h=z),u>p&&(p=u),v=-1))}J.putImageData(Q,0,0);if(C&&c)return a-=
-40,0>a&&(a=0),h+=40,h>=d&&(h=d-1),k-=40,0>k&&(k=0),p+=40,p>=n&&(p=n-1),{e:a,f:k,g:h,h:p,a:b.a,b:b.b}}var ha=[],S=0,ia=0,T=0;
-function ja(a){var c,b=a.src.split("/");c=b[b.length-1];b=a.i;1==b&&console.log("var compCoordinates = [");for(var d=!1,n=0;n<ha.length;n++)ha[n]==c&&(d=!0);d||ha.push(c);if(!d){a=ga(a,!0);S+(a.g-a.e)>=N.width&&(S=0,ia+=T,T=0);for(var d=S,n=ia,D=I.width,h=N.width,k=N.height,p=M.getImageData(0,0,D,I.height).data,k=O.getImageData(0,0,h,k),v=k.data,f=a.e;f<a.g;f++)for(var x=a.f;x<a.h;x++){var L=D*x*4+4*f,E=h*(n+x-a.f)*4+4*(d+f-a.e);v[E]=p[L];v[++E]=p[++L];v[++E]=p[++L]}O.putImageData(k,0,0);c='  {name:"'+
-c+'", x:'+d+",y:"+n+",w:"+(a.g-a.e)+",h:"+(a.h-a.f)+", dx:"+(a.a+a.e)+", dy:"+(a.b+a.f)+"}";c=b==m.length-1?c+"\n];":c+",";console.log(c);b=a.h-a.f;b>T&&(T=b);S+=a.g-a.e}}function ka(a){for(var c=g.length,b=0,d=0;d<c&&!b;d++)g[d].name==a&&(b=d);return b}function la(){var a=["webkit","moz","ms","o"];if("hidden"in document)return"hidden";for(var c=0;c<a.length;c++)if(a[c]+"Hidden"in document)return a[c]+"Hidden";return null}function U(){var a=la();return a?document[a]:!1}var ma=la();
-if(ma){var na=ma.replace(/[H|h]idden/,"")+"visibilitychange";document.addEventListener(na,oa)}function oa(){U()&&B&&J.drawImage(V,0,0)}function pa(){function a(c){var b=c,d=da;B&&(d=m[b].time);setTimeout(function(){c++;c<m.length?a(c):!C&&0<fa&&(c=1,setTimeout(function(){a(c)},fa+(U()?1E3:0)));if(B)U()||drawImageStep(W,!1,ka(m[b].name));else{var d=qa[b];X[b]?drawImageStep(d):(console.log("info: image not available yet, nr:"+b),X[b]=drawImageStep)}},d+(U()?200:0))}a(1)}
-if(ca)for(var ra=m.length-2;0<ra;ra--)m.push(m[ra]);var X=Array(m.length);aa?drawImageStep=ga:C&&(drawImageStep=ja,N=document.getElementById("compositeCanvas"),O=N.getContext("2d"),O.fillStyle="#"+w,O.fillRect(0,0,N.width,N.height));var qa=[],V=new Image,W=new Image;
-if(B)drawImageStep=ga,V.onload=function(){J.drawImage(this,0,0);Date.now||(Date.now=function(){return(new Date).getTime()});var a=Date.now();W.onload=function(){var c=ea+a-Date.now();1>c&&(c=1);setTimeout(function(){M.drawImage(W,0,0);pa()},c)};W.src=H+"composite.jpg";},V.src=H+m[0].name;else for(var Y=0;Y<m.length;Y++){var Z=new Image;Z.src=H+m[Y].name;Z.i=Y;qa.push(Z);Z.onload=0==Y?function(){J.drawImage(this,0,0);setTimeout(function(){pa()},ea)}:function(){var a=
-this.i;if(0<=a)if(X[a])X[a](V[a]);else X[a]=!0}};}());
+
+      var frameSpeed = 40;
+      var sconf = {
+        mask: "00FF00",
+        fastDraw: true,
+        addReverseJpgFiles: false,
+        frameSpeed: frameSpeed,  // msec
+        waitTimeStart: 4000,
+        waitTimeRepeat: 6000,
+        jpgColorMargin: 20,  
+        filterDepth: 12,        // bit more filtering needed on the composite (this works as the cutmargin was increased from default)
+        filterThreshold: 9
+      };
+
+     var compCoordinates = [
+           {name:"P3260804.jpg", x:0,y:0,w:171,h:273, dx:307, dy:538},
+           {name:"P3260803.jpg", x:171,y:0,w:138,h:266, dx:344, dy:524},
+           {name:"P3260802.jpg", x:309,y:0,w:158,h:253, dx:340, dy:536},
+           {name:"P3260801.jpg", x:467,y:0,w:165,h:256, dx:353, dy:536},
+           {name:"P3260800.jpg", x:632,y:0,w:231,h:248, dx:312, dy:538},
+           {name:"P3260799.jpg", x:863,y:0,w:226,h:251, dx:320, dy:538},
+           {name:"P3260798.jpg", x:1089,y:0,w:178,h:244, dx:364, dy:536},
+           {name:"P3260797.jpg", x:1267,y:0,w:192,h:245, dx:372, dy:538},
+           {name:"P3260796.jpg", x:0,y:273,w:212,h:239, dx:375, dy:538},
+           {name:"P3260795.jpg", x:212,y:273,w:197,h:237, dx:393, dy:541},
+           {name:"P3260794.jpg", x:409,y:273,w:233,h:260, dx:382, dy:529},
+           {name:"P3260793.jpg", x:642,y:273,w:194,h:236, dx:439, dy:542},
+           {name:"P3260792.jpg", x:836,y:273,w:224,h:252, dx:433, dy:529},
+           {name:"P3260791.jpg", x:1060,y:273,w:242,h:272, dx:439, dy:517},
+           {name:"P3260790.jpg", x:1302,y:273,w:211,h:242, dx:459, dy:535},
+           {name:"P3260789.jpg", x:0,y:545,w:211,h:253, dx:477, dy:527},
+           {name:"P3260788.jpg", x:211,y:545,w:222,h:244, dx:490, dy:533},
+           {name:"P3260787.jpg", x:433,y:545,w:231,h:245, dx:500, dy:532},
+           {name:"P3260786.jpg", x:664,y:545,w:204,h:246, dx:517, dy:532},
+           {name:"P3260785.jpg", x:868,y:545,w:204,h:242, dx:532, dy:535},
+           {name:"P3260784.jpg", x:1072,y:545,w:196,h:237, dx:556, dy:538}
+      ];
+
+
+      var jpgFiles = [
+          {name:"P3260805.jpg", time: frameSpeed*1.2}, // this first file is the base jpg (the whole scene)
+          {name:"P3260804.jpg", time: frameSpeed*1.2}, // these next are masked out animation frames
+          {name:"P3260803.jpg", time: frameSpeed*1.2},
+          {name:"P3260802.jpg", time: frameSpeed*1.2},
+          {name:"P3260801.jpg", time: frameSpeed*1.2},
+          {name:"P3260800.jpg", time: frameSpeed*1.2},
+          {name:"P3260799.jpg", time: frameSpeed*1.2},
+          {name:"P3260798.jpg", time: frameSpeed*1.2},
+          {name:"P3260797.jpg", time: frameSpeed*1.2},
+          {name:"P3260796.jpg", time: frameSpeed*1.2},
+          {name:"P3260795.jpg", time: frameSpeed*1.3},
+          {name:"P3260794.jpg", time: frameSpeed*1.3},
+          {name:"P3260793.jpg", time: frameSpeed*1.3},
+          {name:"P3260792.jpg", time: frameSpeed*1.4},
+          {name:"P3260791.jpg", time: frameSpeed*1.4},
+          {name:"P3260790.jpg", time: frameSpeed*1.5},
+          {name:"P3260789.jpg", time: frameSpeed*1.5},
+          {name:"P3260788.jpg", time: frameSpeed*1.6},
+          {name:"P3260787.jpg", time: frameSpeed*1.7},
+          {name:"P3260786.jpg", time: frameSpeed*1.8},
+          {name:"P3260785.jpg", time: frameSpeed*2.2},
+          {name:"P3260784.jpg", time: frameSpeed*2.3},
+          {name:"P3260785.jpg", time: frameSpeed*5.2},
+          {name:"P3260786.jpg", time: frameSpeed*1.7}, // manually added the reverse jpgs, as I change the framespeed for the return walk
+          {name:"P3260787.jpg", time: frameSpeed*1.5},
+          {name:"P3260788.jpg", time: frameSpeed*1.3},
+          {name:"P3260789.jpg", time: frameSpeed*1.2},
+          {name:"P3260790.jpg", time: frameSpeed*1.1},
+          {name:"P3260791.jpg", time: frameSpeed},
+          {name:"P3260792.jpg", time: frameSpeed},
+          {name:"P3260793.jpg", time: frameSpeed},
+          {name:"P3260794.jpg", time: frameSpeed},
+          {name:"P3260795.jpg", time: frameSpeed},
+          {name:"P3260796.jpg", time: frameSpeed},
+          {name:"P3260797.jpg", time: frameSpeed},
+          {name:"P3260798.jpg", time: frameSpeed},
+          {name:"P3260799.jpg", time: frameSpeed},
+          {name:"P3260800.jpg", time: frameSpeed},
+          {name:"P3260801.jpg", time: frameSpeed*1.1},
+          {name:"P3260802.jpg", time: frameSpeed*1.2},
+          {name:"P3260803.jpg", time: frameSpeed*1.3},
+          {name:"P3260804.jpg", time: frameSpeed*1.2}
+      ];
+
+      simegraph(sconf, compCoordinates, jpgFiles);
+    
     </script>
+    
   </body>
 </html>
