@@ -176,9 +176,10 @@ function simegraph(sconf, compCoordinates, jpgFiles) {
         // determine R,G,B filter values (to filter between mask and image data)
         var jpgColorMargin = 1; // if jpg was lossless this should be 1, typically 6 is needed (worst case chrome on macos)
         
-        (maskR > 125) ? (maskR -= _conf.jpgColorMargin) : (maskR += _conf.jpgColorMargin);
-        (maskG > 125) ? (maskG -= _conf.jpgColorMargin) : (maskG += _conf.jpgColorMargin);
-        (maskB > 125) ? (maskB -= _conf.jpgColorMargin) : (maskB += _conf.jpgColorMargin);
+        // apply jpgColorMargin to mask values (assuming mask RGB is build up of 0 or 255 values)
+        (maskR > 128) ? (maskR -= _conf.jpgColorMargin) : (maskR += _conf.jpgColorMargin);
+        (maskG > 128) ? (maskG -= _conf.jpgColorMargin) : (maskG += _conf.jpgColorMargin);
+        (maskB > 128) ? (maskB -= _conf.jpgColorMargin) : (maskB += _conf.jpgColorMargin);
 
         // set max (x,y) to prevent drawing outside of canvas and to limit to width/height of source
         var max_x = width - pos['dx'];
@@ -190,6 +191,26 @@ function simegraph(sconf, compCoordinates, jpgFiles) {
           max_y = pos['h'];
         }
 
+        function checkForImage(datapos) {
+              var result = false;
+              if (  ((maskR > 125) ? (data[datapos] < maskR) : (data[datapos] > maskR)) ||
+                    ((maskG > 125) ? (data[++datapos] < maskG) : (data[++datapos] > maskG)) || 
+                    ((maskB > 125) ? (data[++datapos] < maskB) : (data[++datapos] > maskB))  ) {
+                result = true;
+              }
+              return result;
+        }
+
+        function checkForMask(datapos) {
+              var result = false;
+              if (  ((maskR > 125) ? (data[datapos] > maskR) : (data[datapos] < maskR)) && 
+                    ((maskG > 125) ? (data[++datapos] > maskG) : (data[++datapos] < maskG)) && 
+                    ((maskB > 125) ? (data[++datapos] > maskB) : (data[++datapos] < maskB))  ) {
+                result = true;
+              }
+              return result;
+        }
+
         for (var y = 0; y < max_y; y++) {
           // precalculate the starting position in the data array
           var iBase = (vWidth * (y + pos['y']) * 4) + (pos['x'] * 4);
@@ -198,33 +219,12 @@ function simegraph(sconf, compCoordinates, jpgFiles) {
           
           for (var x = 0, i = iBase, d = dBase; x < max_x; x++, i += 4, d += 4) {
 
-            function checkForImage(datapos) {
-              var result = false;
-              if (  ((maskR > 125) ? (data[datapos] < maskR) : (data[datapos] > maskR)) ||
-                    ((maskG > 125) ? (data[++datapos] < maskG) : (data[++datapos] > maskG)) || 
-                    ((maskB > 125) ? (data[++datapos] < maskB) : (data[++datapos] > maskB))  ) {
-                result = true;
-              }
-              return result;
-            }
-
-            function checkForMask(datapos) {
-              var result = false;
-              if (  ((maskR > 125) ? (data[datapos] > maskR) : (data[datapos] < maskR)) && 
-                    ((maskG > 125) ? (data[++datapos] > maskG) : (data[++datapos] < maskG)) && 
-                    ((maskB > 125) ? (data[++datapos] > maskB) : (data[++datapos] < maskB))  ) {
-                result = true;
-              }
-              return result;
-            }
-
             // check for Image content
             if (jpegFilter < filterDepth) {
               if (checkForImage(i)) {
                   jpegFilter++;
               }
             }
-            
 
             // Check if mask is direct area
             // In the jpg, there is no hard boundary of pixels at 255,255,255 bordering pixels with real image data
@@ -361,9 +361,9 @@ function simegraph(sconf, compCoordinates, jpgFiles) {
               //   (if image touches borders of the image, there should not be mask data beond that point - 
               //    else the filter will prevent image pixels being drawn close to the border)
               //   The inverted mask also helps to identify a too tight crop (not enough mask area)
-              R = (maskR > 125) ? 0 : 255;
-              G = (maskG > 125) ? 0 : 255;
-              B = (maskB > 125) ? 0 : 255;
+              R = (maskR > 128) ? 0 : 255;
+              G = (maskG > 128) ? 0 : 255;
+              B = (maskB > 128) ? 0 : 255;
             }
             else {
               R = data[i];
