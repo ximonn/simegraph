@@ -9,15 +9,25 @@ Animated jpgs. A small javascript lib and a few views to create high quality ani
 
 * Explanation how it works: http://padrone.nl/rembrandt_simegraph
 
+In short:
+* Animation frames are animated by the javascript on a base image.
+* The animation is localized, as in only a relative small part of the image animates.
+* This is not suitable for full image animation, use video for that!
+
+As the animation is broken up into a static image and a dynamic part, the image can be displayed before the dynamic part is finnished loading.
+
 ## How it compares to WEBM
 
-The simegraph basically uses two frames, the base image and the composite image.
-Further it uses javascript to set wait times between frames (for example to have the animation start after 3 seconds and looping afterwards etc.).
+The simegraph basically uses two frames, the base image and the composite image.<br>
+Further it uses javascript to set wait times between frames (for example to have the animation start after 3 seconds and looping afterwards etc.).<br>
 In one example measured it is halve the size of the comparable webm, I let the simegraph lib use webp pictures instead of jpgs for an equivalant comparison.
 
 simegraph JS | WEBM
 -------------|-------
 1085KB for 3 files <ul><li>471KB base.webp</li><li>609KB composite.webp</li><li>5KB simegraph1.js lib</li></ul>  | 2024 KB movie.webm at q 2,6 (equivalent quality to the webp) 
+
+Note that a WEBM movie can be shared as is, the simegraph requires the javascript lib and two images to form the animation and is less easily shared.<br>
+E.g. For sharing on social media you could chose to share a scaled down static image which links to a server where the full simegraph is shown.
 
 ## Step by step guide 
 
