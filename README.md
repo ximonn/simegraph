@@ -33,8 +33,8 @@ E.g. For sharing on social media you could chose to share a scaled down static i
 
 The webp (picture) version and the comparable webm version:
 
-http://padrone.nl/simegraph2/webp.html
-http://padrone.nl/simegraph2/rembrandt_selfie.webm
+* http://padrone.nl/simegraph2/webp.html
+* http://padrone.nl/simegraph2/rembrandt_selfie.webm
 
 ## Step by step guide 
 
