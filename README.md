@@ -9,6 +9,16 @@ Animated jpgs. A small javascript lib and a few views to create high quality ani
 
 * Explanation how it works: http://padrone.nl/rembrandt_simegraph
 
+## How it compares to WEBM
+
+The simegraph basically uses two frames, the base image and the composite image.
+Further it uses javascript to set wait times between frames (for example to have the animation start after 3 seconds and looping afterwards etc.).
+In one example measured it is halve the size of the comparable webm, I let the simegraph lib use webp pictures instead of jpgs for an equivalant comparison.
+
+simegraph JS | WEBM
+-------------|-------
+1085KB for 3 files <ul><li>471KB base.webp</li><li>609KB composite.webp</li><li>5KB simegraph1.js lib</li></ul>  | 2024 KB movie.webm at q 2,6 (equivalent quality to the webp) 
+
 ## Step by step guide 
 
 * Demo related to this howto: http://www.padrone.nl/simegraph/
