@@ -31,9 +31,9 @@ simegraph JS | WEBM
 Note that a WEBM movie can be shared as is, the simegraph requires the javascript lib and two images to form the animation and is less easily shared.<br>
 E.g. For sharing on social media you could chose to share a scaled down static image which links to a server where the full simegraph is shown.
 
-The original version (still in jpg) and the comparable webm version (note that the jpg's are much larger than the webp resulting in equivalent size as the webm).
+The webp (picture) version and the comparable webm version:
 
-http://padrone.nl/simegraph2/index.html
+http://padrone.nl/simegraph2/webp.html
 http://padrone.nl/simegraph2/rembrandt_selfie.webm
 
 ## Step by step guide 
