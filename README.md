@@ -22,12 +22,19 @@ The simegraph basically uses two frames, the base image and the composite image.
 Further it uses javascript to set wait times between frames (for example to have the animation start after 3 seconds and looping afterwards etc.).<br>
 In one example measured it is halve the size of the comparable webm, I let the simegraph lib use webp pictures instead of jpgs for an equivalant comparison.
 
+For a simegraph with 3 seconds of static image before an animation of 80 frames forwards and the same 80 frames backwards starts.
+
 simegraph JS | WEBM
 -------------|-------
 1085KB for 3 files <ul><li>471KB base.webp</li><li>609KB composite.webp</li><li>5KB simegraph1.js lib</li></ul>  | 2024 KB movie.webm at q 2,6 (equivalent quality to the webp) 
 
 Note that a WEBM movie can be shared as is, the simegraph requires the javascript lib and two images to form the animation and is less easily shared.<br>
 E.g. For sharing on social media you could chose to share a scaled down static image which links to a server where the full simegraph is shown.
+
+The original version (still in jpg) and the comparable webm version (note that the jpg's are much larger than the webp resulting in equivalent size as the webm).
+
+http://padrone.nl/simegraph2/index.html
+http://padrone.nl/simegraph2/rembrandt_selfie.webm
 
 ## Step by step guide 
 
