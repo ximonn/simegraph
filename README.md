@@ -18,7 +18,15 @@ As the animation is broken up into a static image and a dynamic part, the image 
 
 ## How it compares to gifv
 
-First, gifv is a video format, simegraph JS is not a format but a method to add a touch of animation to a photo (static image).
+First, gifv is intended to be a video format, simegraph JS is not a format but a method to add a touch of animation to a photo (static image).
+
+### Apply simegraph JS jpg animation as gifv
+You can view the simegraph as gifv!<br>
+If you use nginx, just add a line to /etc/nginx/mime.types containing: "   text/html;   gifv;  "<br>
+Next change the webpage showing your simegraph to gifv extention (instead of html)!<br>
+example: http://padrone.nl/simegraph/toystore/toystore.gifv
+
+### Differences between webm and simegraph JS
 
 The simegraph basically uses two frames, the base image and the composite image.<br>
 Further it uses javascript to set wait times between frames (for example to have the animation start after 3 seconds and looping afterwards etc.).<br>
@@ -26,7 +34,7 @@ In one example measured it is halve the size of the comparable webm, I let the s
 
 For a simegraph with 3 seconds of static image before an animation of 80 frames forwards and the same 80 frames backwards starts.
 
-simegraph JS | gifv
+simegraph JS | gifv (as a .webm video)
 -------------|-------
 1085KB for 3 files <ul><li>471KB base.webp</li><li>609KB composite.webp</li><li>5KB simegraph1.js lib</li></ul>  | 2024 KB movie.webm at q 2,6 (equivalent quality to the webp) 
 
